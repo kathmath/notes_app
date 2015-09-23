@@ -39,24 +39,20 @@ ul {
 li {
 	word-wrap: break-word;
 	padding: $margin;
+	padding-right: $margin / 2;
 	opacity: 1;
-}
-
-li button {
-	width: 50px;
-	text-align: center;
 }
 
 li:nth-child(1n) {
 	background-color: $color2;
-	transition: all 0.2s ease-out;
+	transition: all 0.4s ease-out;
 }
 
 li:nth-child(2n) {
 	background-color: $color1;
 	border-left: 1px solid $color2;
 	border-right: 1px solid $color2;
-	transition: all 0.2s ease-out;
+	transition: all 0.4s ease-out;
 }
 
 li:last-child {
@@ -66,7 +62,7 @@ li:last-child {
 li.editMode {
 	background-color: rgba(85, 119, 153, 0.3);
 	border: none;
-	transition: all 0.2s ease-out;
+	transition: all 0.4s ease-out;
 	.editInput {
 		display: inline;
 	}
@@ -90,6 +86,9 @@ button {
     background-color: rgba(250, 165, 70, 0);
     min-width: 50px;
     text-align: center;
+    :focus {
+		outline: 0;
+	}
 }
 
 input {
@@ -98,21 +97,27 @@ input {
 	border: none;
 	background-color: rgba(250, 165, 70, 0);
 	padding: $margin;
-	flex-grow: 1;
+	
 }
 
 .newNote {
 	@include flex_container(row, stretch, space-between, nowrap);
 	background-color: rgba(250, 165, 70, 0.5);
 	margin: 0 $margin;
+	overflow: hidden;
 }
+
+#new {
+  	flex-grow: 1;
+  }
 
 .add {
 	text-align: center;
 	background-color: rgba(250, 165, 70, 0.7);
 	max-width: 120px;
 	min-width: 100px;
-	display: inline-block;	
+	display: inline-block;
+	// flex-shrink: 2;	
 }
 
 .note {
@@ -124,7 +129,9 @@ input {
 
 .editInput {
 	display: none;
+	flex-grow: 1;
 }
+
 
 #container {
 	max-width: 40em;
@@ -148,10 +155,21 @@ button:before {
 
 .edit:before {
     content: "\f040";
+    :focus {
+		outline: 0;
+	}
 }
 
 .delete:before {
     content: "\f014";
+    :focus {
+		outline: 0;
+	}
 }
 
+@media (max-width: 360px) {
+  #new {
+  	max-width: 150px;
+  }
+}
 
