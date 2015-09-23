@@ -1,0 +1,157 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+@import "http://netdna.bootstrapcdn.com/font-awesome/2.0/css/font-awesome.css";
+
+
+$margin: 1em;
+$color1: #FFF; //white
+$color2: #EEE; //lt grey
+
+@mixin flex_container($flex-direction, $align-items, $justify-content, $wrap) {
+	display: flex;
+	flex-direction: $flex-direction;
+	align-items: $align-items;
+	justify-content: $justify-content;
+	flex-wrap: $wrap;
+}
+
+//main styles
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  :focus {
+		outline: 0;
+	}  
+}
+
+
+h1 {
+	// font-family: 'Raleway', sans-serif;
+	text-align: center;
+	font-size: 2rem;
+	margin-top: $margin * 3;
+	margin-bottom: $margin;
+}
+
+ul {
+	list-style-type: none;
+}
+
+li {
+	word-wrap: break-word;
+	padding: $margin;
+	opacity: 1;
+}
+
+li button {
+	width: 50px;
+	text-align: center;
+}
+
+li:nth-child(1n) {
+	background-color: $color2;
+	transition: all 0.2s ease-out;
+}
+
+li:nth-child(2n) {
+	background-color: $color1;
+	border-left: 1px solid $color2;
+	border-right: 1px solid $color2;
+	transition: all 0.2s ease-out;
+}
+
+li:last-child {
+	border-bottom: 1px solid $color2;
+}
+
+li.editMode {
+	background-color: rgba(85, 119, 153, 0.3);
+	border: none;
+	transition: all 0.2s ease-out;
+	.editInput {
+		display: inline;
+	}
+	label {
+		display: none;
+	}
+	.edit:before {
+    content: "\f0c7";
+	}
+}
+
+label {
+	cursor: pointer;
+	font-size: 1.2rem;
+	flex-grow: 1;
+}
+
+button {
+    border: none;
+    font-size: 1.2rem;
+    background-color: rgba(250, 165, 70, 0);
+    min-width: 50px;
+    text-align: center;
+}
+
+input {
+	font-size: 1.2rem;
+	display: flex;
+	border: none;
+	background-color: rgba(250, 165, 70, 0);
+	padding: $margin;
+	flex-grow: 1;
+}
+
+.newNote {
+	@include flex_container(row, stretch, space-between, nowrap);
+	background-color: rgba(250, 165, 70, 0.5);
+	margin: 0 $margin;
+}
+
+.add {
+	text-align: center;
+	background-color: rgba(250, 165, 70, 0.7);
+	max-width: 120px;
+	min-width: 100px;
+	display: inline-block;	
+}
+
+.note {
+	@include flex_container(row, center, flex-end, nowrap);
+	input {
+		padding: 0;
+	}
+}
+
+.editInput {
+	display: none;
+}
+
+#container {
+	max-width: 40em;
+	margin: 0 auto;
+}
+
+#myNotes {
+	margin: $margin * 2 $margin;
+}
+
+
+//font awesome
+
+button:before {
+    font-family: FontAwesome;
+    font-weight: 400;
+    font-style: normal;
+    display: inline-block;
+    font-size: 1.4em;  
+}
+
+.edit:before {
+    content: "\f040";
+}
+
+.delete:before {
+    content: "\f014";
+}
+
+
