@@ -78,8 +78,8 @@ var editNote = function() {
 
   var note = this.parentNode;
   var editInput = note.querySelector("input");
-  console.log(editInput);
-  var label = note.querySelector("label");
+  // console.log(editInput);
+  var label = note.querySelector("label"); 
   var containsClass = note.classList.contains("editMode");
 
   if(containsClass) {
